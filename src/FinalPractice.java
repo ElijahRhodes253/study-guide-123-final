@@ -29,5 +29,79 @@ public class FinalPractice {
         return sum;
     }
 
-    // TODO: implement the rest of the study guide AND MAKE GOOD UNIT TESTS
+    /*
+    Given a reference to the head of a linked list, return the 
+    largest of only the last 3 values of the list.
+    
+    Example:
+    Linked List:
+    7 -> 3 -> 19 -> 21 -> 14 -> 33 -> 8 -> 26 -> 11 -> 5
+    Expected Answer: 26
+    
+    Last 3 values are: 26  11  5, the largest of which is 26
+    */
+    public static int largestOfLastThree(ListNode head)
+    {
+        int hNum = Integer.MIN_VALUE;
+        ListNode current = head;
+
+        for(int i = 0; i < listLength(head)-3; i++)
+        {
+            current = current.next;
+        }
+        while(current != null)
+        {
+            if(current.data > hNum) hNum = current.data;
+            current = current.next;
+        }
+        return hNum;
+    }
+
+    /*
+    Given a reference to the root of a tree, return the sum of 
+    the leaf nodes with even values in the tree. Do not include 
+    any odd or branch nodes.
+
+    Example:
+    Tree:
+               12
+             /    \
+            6      18
+           / \    /  \
+          4   8  16   20
+         /               \
+        3                22
+
+    Expected Answer: 46
+
+    The leaf nodes are 3   8   16   22, and the even ones are 8   16   22.
+    The sum of the even leaf nodes is 8+16+22 = 46
+    */
+
+    public static int leafEvenSum(TreeNode root)
+    {
+        if(root.left == null && root.right == null)
+        {
+            if(root.data % 2 == 0) return root.data;
+        }
+        
+        leafEvenSum(root.left); 
+        leafEvenSum(root.right);
+        return 0;
+    }
+
+    public static int listLength(ListNode head)
+    {
+        int count = 0;
+        ListNode current = head;
+
+        while(current != null)
+        {
+            current = current.next;
+            count++;
+        }
+
+        return count;
+    }
+
 }
