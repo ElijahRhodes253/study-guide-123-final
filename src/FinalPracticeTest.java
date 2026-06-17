@@ -1,5 +1,8 @@
 import static org.junit.Assert.*;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 import org.junit.jupiter.api.Test;
 
 public class FinalPracticeTest {
@@ -113,5 +116,34 @@ public class FinalPracticeTest {
         TreeNode tree = new TreeNode(9);
         int actual = FinalPractice.branchOddSums(tree);
         assertEquals(0, actual);
+    }
+    
+    @Test
+    void listValueCounter_nullList() {
+        ListNode list = null;
+        Map<Integer, Integer> actual = FinalPractice.listValueCounter(list);
+        Map<Integer, Integer> tMap = new TreeMap<>();
+        assertEquals(tMap, actual);
+    }
+
+    @Test
+    void listValueCounter_bigList() {
+        ListNode list = new ListNode(4, new ListNode(4, new ListNode(15, new ListNode(4, new ListNode(15, new ListNode(1, new ListNode(1, new ListNode(8, new ListNode(1)))))))));
+        Map<Integer, Integer> actual = FinalPractice.listValueCounter(list);
+        Map<Integer, Integer> tMap = new TreeMap<>();
+        tMap.put(4,3);
+        tMap.put(1,3);
+        tMap.put(15,2);
+        tMap.put(8,1);
+        assertEquals(tMap, actual);
+    }
+
+    @Test
+    void listValueCounter_oneValueList() {
+        ListNode list = new ListNode(1);
+        Map<Integer, Integer> actual = FinalPractice.listValueCounter(list);
+        Map<Integer, Integer> tMap = new TreeMap<>();
+        tMap.put(1,1);
+        assertEquals(tMap, actual);
     }
 }

@@ -1,3 +1,6 @@
+import java.util.Map;
+import java.util.TreeMap;
+
 public class FinalPractice {
     public static void main(String[] args) {
         ListNode list = new ListNode(4, new ListNode(8, new ListNode(15, new ListNode(16, new ListNode(23, new ListNode(42, new ListNode(11, new ListNode(29, new ListNode(34)))))))));
@@ -120,6 +123,46 @@ public class FinalPractice {
         return branchOddSums(root.left) + branchOddSums(root.right) + val;
     }
 
+    /*
+    Given a reference to a head node in a linked list of integers, 
+    return a Map<Integer, Integer> containing each value along with 
+    the number of times it shows up.
+    
+    Example:
+    Linked List:
+    4 -> 34 -> 4 -> 16 -> 4 -> 16 -> 29 -> 8 -> 8
+
+    Expected Return Map (order is unimportant): 
+    { 
+      4: 3,
+      8: 2,
+      16: 2,
+      29: 1,
+      34: 1
+    } 
+
+    Explanation
+    4 shows up three times
+    8 shows up two times
+    16 shows up two times
+    29 shows up one time
+    34 shows up one time
+    */
+    public static Map<Integer, Integer> listValueCounter(ListNode head)
+    {
+        Map<Integer, Integer> tMap = new TreeMap<>();
+        ListNode current = head;
+
+        while(current != null)
+        {
+            if(tMap.containsKey(current.data)) tMap.put(current.data, tMap.get(current.data) + 1);
+            else tMap.put(current.data, 1);
+            current = current.next;
+        }
+        return tMap;
+    }
+
+    //Extra method for other method i guess
     public static int listLength(ListNode head)
     {
         int count = 0;
@@ -133,5 +176,4 @@ public class FinalPractice {
 
         return count;
     }
-
 }
