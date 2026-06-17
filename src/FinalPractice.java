@@ -80,14 +80,14 @@ public class FinalPractice {
 
     public static int leafEvenSum(TreeNode root)
     {
+        if(root == null) return 0;
+        int val = 0;
         if(root.left == null && root.right == null)
         {
-            if(root.data % 2 == 0) return root.data;
+            if(root.data % 2 == 0) val = root.data;
         }
-        
-        leafEvenSum(root.left); 
-        leafEvenSum(root.right);
-        return 0;
+
+        return leafEvenSum(root.left) + leafEvenSum(root.right) + val;
     }
 
     public static int listLength(ListNode head)
