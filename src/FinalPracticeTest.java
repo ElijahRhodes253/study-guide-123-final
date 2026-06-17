@@ -86,4 +86,32 @@ public class FinalPracticeTest {
         int actual = FinalPractice.leafEvenSum(tree);
         assertEquals(0, actual);
     }
+
+    @Test
+    void branchOddSums_noOddValues() {
+        TreeNode tree = new TreeNode(12, new TreeNode(6, new TreeNode(4, new TreeNode(3), null), new TreeNode(7)), new TreeNode(18, new TreeNode(15), new TreeNode(20, null, new TreeNode(21))));
+        int actual = FinalPractice.branchOddSums(tree);
+        assertEquals(0, actual);
+    }
+
+    @Test
+    void branchOddSums_someOddValues() {
+        TreeNode tree = new TreeNode(11, new TreeNode(9, new TreeNode(4, new TreeNode(3), null), new TreeNode(7)), new TreeNode(18, new TreeNode(15), new TreeNode(21, null, new TreeNode(21))));
+        int actual = FinalPractice.branchOddSums(tree);
+        assertEquals(41, actual);
+    }
+
+    @Test
+    void branchOddSums_nullTree() {
+        TreeNode tree = null;
+        int actual = FinalPractice.branchOddSums(tree);
+        assertEquals(0, actual);
+    }
+
+    @Test
+    void branchOddSums_oneValue() {
+        TreeNode tree = new TreeNode(9);
+        int actual = FinalPractice.branchOddSums(tree);
+        assertEquals(0, actual);
+    }
 }

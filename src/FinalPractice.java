@@ -77,7 +77,6 @@ public class FinalPractice {
     The leaf nodes are 3   8   16   22, and the even ones are 8   16   22.
     The sum of the even leaf nodes is 8+16+22 = 46
     */
-
     public static int leafEvenSum(TreeNode root)
     {
         if(root == null) return 0;
@@ -88,6 +87,37 @@ public class FinalPractice {
         }
 
         return leafEvenSum(root.left) + leafEvenSum(root.right) + val;
+    }
+
+    /*
+    Given a reference to the root of a tree, return the sum of the 
+    branch nodes with odd values in the tree. Do not include any 
+    even or leaf nodes.
+
+    Example:
+    Tree:
+               15
+             /    \
+            9      4
+           / \    /  \
+          8   11 21   30
+         / \       \
+        2   6       23
+
+    Expected Answer: 45
+    
+    The branch nodes are 15  9  4  8  21, and the odd ones are 15  9   21
+    The sum of the odd branch nodes is 15+9+21=45
+    */
+    public static int branchOddSums(TreeNode root)
+    {
+        if(root == null) return 0;
+        int val = 0;
+        if(!(root.left == null && root.right == null))
+        {
+            if(root.data % 2 != 0) val = root.data;
+        }
+        return branchOddSums(root.left) + branchOddSums(root.right) + val;
     }
 
     public static int listLength(ListNode head)
